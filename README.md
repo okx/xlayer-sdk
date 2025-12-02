@@ -8,23 +8,23 @@ Utilities for normalizing account identifiers between OKX’s `XKO` format and s
 
 ## `toEvmAddress`
 
-Converts an address-like string into an EIP‑55–checksummed `0x` prefixed EVM address.
+Converts an address-like string into an EIP55 checksummed `0x` prefixed EVM address.
 
 - **Accepted input forms**
-  - Already-prefixed EVM address: `0x` + 40 hex chars.
-  - Bare 40-character hex string.
-  - `XKO` + 40 hex chars (case-insensitive).
+  - none-prefixed EVM address: 40 hex chars.
+  - "0x"-prefixed EVM address: `0x` + 40 hex chars.
+  - "XKO"-prefixed EVM address: `XKO` + 40 hex chars.
 - **Output**
-  - A `0x`-prefixed, 40-character, EIP‑55 checksum-cased address.
+  - A `0x`-prefixed, 40-character, EIP55 checksummed address.
 - **Errors**
   - `Address must be a string` if the input isn’t a string.
-  - `Invalid address length: expected 40 hex chars, got N` if (after trimming/prefix removal) the length ≠ 40.
+  - `Invalid address length` if (after trimming/prefix removal) the length ≠ 40.
   - `Invalid hex characters in address` if non-hex characters are present.
 
 
 ## `fromEvmAddress`
 
-Converts a `0x`-prefixed (or bare) EVM address back into an `XKO` prefixed string that keeps the checksum casing but omits the `0x`.
+Converts a `0x`-prefixed EVM address back into an `XKO` prefixed address-like string that keeps the checksum casing but omits the `0x`.
 
 - **Accepted input forms**
   - `0x` + 40 hex chars.
@@ -33,5 +33,5 @@ Converts a `0x`-prefixed (or bare) EVM address back into an `XKO` prefixed strin
   - `XKO` + 40 hex chars, preserving the checksum capitalization.
 - **Errors**
   - `Address must be a string` if the input isn’t a string.
-  - `Invalid address length: expected 40 hex chars, got N` if the body isn’t exactly 40 characters.
+  - `Invalid address length`  if (after trimming/prefix removal) the length ≠ 40.
   - `Invalid hex characters in address` if the body contains non-hex characters.
