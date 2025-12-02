@@ -1,0 +1,8 @@
+[package]
+name = "multi_address"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tiny-keccak = { version = "2", features = ["keccak"] }
+thiserror = "1"
