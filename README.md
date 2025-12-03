@@ -2,13 +2,28 @@
 This repo contains multi language sdk for interacting with xlayer blockchain. Currently, we provide custom support for below functionalities
 - `XKO` prefixed address
 
-# `XKO` prefixed address
+# XKO prefixed address
+XLayer supports both normal evm address, and `XKO` prefixed address. as an example, for this evm address `0x70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625`, below are all valid address.
+- 0x70586beeb7b7aa2e7966df9c8493c6cbfd75c625 (lower case)
+- XKO70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625 (XKO prefix)
+- xko70586beeb7b7aa2e7966df9c8493c6cbfd75c625 (XKO prefix lower case)
+- Xko70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625 (XKO prefix, partially lower case)
 
-Utilities for normalizing account identifiers between OKX’s `XKO` format and standard EVM addresses. The implementation exists in multiple languages (`js/`, `ts/`, `py/`, `go/`, `rust/`, `java/`)
+below are invalid address
+- XKO0x70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625
+
+to better facilitate users use multiple address format. we provide util functions to support conversion between standard evm address and XLayer address.
+Below languages are supported 
+- js 
+- ts
+- py 
+- go 
+- rust 
+- java
 
 ## `toEvmAddress`
 
-Converts an address-like string into an EIP55 checksummed `0x` prefixed EVM address.
+Converts an address-like string into an EIP55 checksummed `0x` prefixed EVM address. 
 
 - **Accepted input forms**
   - none-prefixed EVM address: 40 hex chars.
@@ -35,3 +50,33 @@ Converts a `0x`-prefixed EVM address back into an `XKO` prefixed address-like st
   - `Address must be a string` if the input isn’t a string.
   - `Invalid address length`  if (after trimming/prefix removal) the length ≠ 40.
   - `Invalid hex characters in address` if the body contains non-hex characters.
+
+
+# rpc test
+XLayer rpc api also supports usage of XLayer address
+- eth_getBalance
+```
+curl -X POST http://localhost:8545 \
+     -H "Content-Type: application/json" \
+     -d '{
+           "jsonrpc":"2.0",
+           "method":"eth_getBalance",
+           "params":["XKOf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", "latest"],
+           "id":1
+         }'
+```
+
+- eth_getTransactionCount
+```
+curl -X POST http://localhost:8545 \
+  -H "Content-Type: application/json" \
+  -d '{
+        "jsonrpc":"2.0",
+        "method":"eth_getTransactionCount",
+        "params":[
+          "XKOf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "latest"
+        ],
+        "id":1
+      }'
+```
