@@ -3,10 +3,10 @@ This repo contains multi language sdk for interacting with xlayer blockchain. Cu
 - `XKO` prefixed address
 
 # XKO prefixed address
-XLayer supports both normal evm address, and `XKO` prefixed address. as an example, for this evm address `0x70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625`, below are all valid address.
-- 0x70586beeb7b7aa2e7966df9c8493c6cbfd75c625 (lower case)
+XLayer supports both normal evm address, and `XKO` prefixed address (case insensitive). as an example, for this evm address `0x70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625`, below are all valid address.
 - XKO70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625 (XKO prefix)
 - xko70586beeb7b7aa2e7966df9c8493c6cbfd75c625 (XKO prefix lower case)
+- Xko70586beeb7b7aa2e7966df9c8493c6cbfd75c625 (mixed upper & lower case)
 
 below are invalid address
 - XKO0x70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625
