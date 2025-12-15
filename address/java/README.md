@@ -1,4 +1,4 @@
 ```
 brew install gradle
-gradle test
+./gradlew clean test
 ```

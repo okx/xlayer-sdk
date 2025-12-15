@@ -4,3 +4,6 @@ address/js/node_modules
 address/js/dist
 address/rust/target
 address/java/.gradle
+address/java/build
+address/java/.idea
+address/java/.vscode

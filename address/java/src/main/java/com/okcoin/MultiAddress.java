@@ -1,6 +1,5 @@
-package com.example;
+package com.okcoin;
 
-import java.math.BigInteger;
 import java.util.Locale;
 
 import org.bouncycastle.jcajce.provider.digest.Keccak;

@@ -1,4 +1,4 @@
-package com.example;
+package com.okcoin;
 
 import static org.junit.jupiter.api.Assertions.*;
 
