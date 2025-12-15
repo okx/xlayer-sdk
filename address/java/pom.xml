@@ -13,9 +13,10 @@
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <enforcer.skip>true</enforcer.skip>
     <junit.version>5.11.0</junit.version>
     <bouncycastle.version>1.70</bouncycastle.version>
-    <enforcer.skip>true</enforcer.skip>
   </properties>
 
   <dependencies>
