@@ -1,6 +1,6 @@
-ts/node_modules
-ts/dist
-js/node_modules
-js/dist
-rust/target
-java/.gradle
+address/ts/node_modules
+address/ts/dist
+address/js/node_modules
+address/js/dist
+address/rust/target
+address/java/.gradle
