@@ -1,0 +1,1 @@
+cd address/java && mvn deploy
