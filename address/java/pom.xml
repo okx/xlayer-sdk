@@ -15,6 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.11.0</junit.version>
     <bouncycastle.version>1.70</bouncycastle.version>
+    <enforcer.skip>true</enforcer.skip>
   </properties>
 
   <dependencies>
@@ -47,6 +48,34 @@
         <version>3.2.5</version>
         <configuration>
           <useModulePath>false</useModulePath>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <id>enforce</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>extra-enforcer-rules</artifactId>
+            <version>1.5.1</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <skip>${enforcer.skip}</skip>
+          <rules>
+            <externalRules>
+              <location>${enforcer.rules.file}</location>
+            </externalRules>
+          </rules>
+          <fail>${enforcer.fail}</fail>
         </configuration>
       </plugin>
     </plugins>
