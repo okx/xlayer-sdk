@@ -5,7 +5,7 @@
 
   <groupId>com.okcoin</groupId>
   <artifactId>xlayer-sdk</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <name>xlayer-sdk</name>
   <description>Java utilities for XLayer</description>
 
