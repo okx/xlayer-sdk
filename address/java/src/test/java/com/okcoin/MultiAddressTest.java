@@ -47,4 +47,46 @@ class MultiAddressTest {
         );
         assertTrue(hex.getMessage().contains("Invalid hex characters"));
     }
+
+    @Test
+    void isXlayerAddressValid() {
+        // Uppercase prefix
+        assertTrue(MultiAddress.isXlayerAddress("XKO70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625"));
+        assertTrue(MultiAddress.isXlayerAddress("XKO" + RAW));
+        
+        // Lowercase prefix
+        assertTrue(MultiAddress.isXlayerAddress("xko70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625"));
+        assertTrue(MultiAddress.isXlayerAddress("xko" + RAW));
+        
+        // Mixed case prefix
+        assertTrue(MultiAddress.isXlayerAddress("Xko70586BeEB7b7Aa2e7966DF9c8493C6CbFd75C625"));
+        assertTrue(MultiAddress.isXlayerAddress("XkO" + RAW));
+        
+        // With whitespace (should be trimmed)
+        assertTrue(MultiAddress.isXlayerAddress("  XKO" + RAW + "  "));
+        assertTrue(MultiAddress.isXlayerAddress("\tXKO" + RAW));
+    }
+
+    @Test
+    void isXlayerAddressInvalid() {
+        // Null input
+        assertFalse(MultiAddress.isXlayerAddress(null));
+        
+        // Empty string
+        assertFalse(MultiAddress.isXlayerAddress(""));
+        assertFalse(MultiAddress.isXlayerAddress("   "));
+        
+        // Addresses without XKO prefix
+        assertFalse(MultiAddress.isXlayerAddress("0x" + RAW));
+        assertFalse(MultiAddress.isXlayerAddress(RAW));
+        assertFalse(MultiAddress.isXlayerAddress(CHECKSUM));
+        
+        // Different prefix
+        assertFalse(MultiAddress.isXlayerAddress("ETH" + RAW));
+        assertFalse(MultiAddress.isXlayerAddress("BTC" + RAW));
+        
+        // XKO as substring (not prefix)
+        assertFalse(MultiAddress.isXlayerAddress(RAW + "XKO"));
+        assertFalse(MultiAddress.isXlayerAddress("0x" + RAW + "XKO"));
+    }
 }

@@ -20,6 +20,14 @@ public final class MultiAddress {
         return OKX_PREFIX + checksum.substring(2);
     }
 
+    public static boolean isXlayerAddress(String input) {
+        if (input == null) {
+            return false;
+        }
+        String normalized = input.trim().toUpperCase(Locale.ROOT);
+        return normalized.startsWith(OKX_PREFIX);
+    }
+
     private static String normalizeBody(String input, boolean allowOkxPrefix) {
         if (input == null) {
             throw new IllegalArgumentException("Address must be a string");
